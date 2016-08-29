@@ -17,11 +17,11 @@ get 'teachers/:teacher_id/students', to: 'students#index', as: 'student_index'
 
 # Lesson
 #index
-get 'students/:student_id/lessons', to: 'lessons#index', as: 'lesson_index'
+get 'students/:student_id/lessons', to: 'lessons#index', as: 'lessons'
+#create
+post 'students/:student_id/lessons', to: 'lessons#create'
 #new
 get 'students/:student_id/lessons/new', to: 'lessons#new', as: 'new_lesson'
-#create
-post 'students/:student_id/lessons/new', to: 'lessons#create'
 #edit
 get 'lessons/:id', to: 'lessons#edit', as: 'edit_lesson'
 #update
