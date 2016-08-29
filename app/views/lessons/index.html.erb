@@ -1,2 +1,31 @@
-<h1>Lessons#index</h1>
-<p>Find me in app/views/lessons/index.html.erb</p>
+<h1>Lessons for <%= @student.first_name %> </h1>
+
+<% @lessons.each do |lesson| %>
+
+	<%= lesson.date %>
+	<%= lesson.notes %>
+	<%= lesson.feedback %>
+
+	<% if current_user.teacher? %>
+		<%= link_to 'Edit Lesson', edit_lesson_path(lesson) %>
+		<%= link_to 'Assignments', assignments_index_path(lesson) %>
+	<% end %>
+
+	<% if current_user.student? %>
+		<%= link_to 'Assignements', assignments_index_path(lesson) %>
+	<% end %>
+
+<% end %>
+
+<% if current_user.teacher? %>
+	<%= link_to 'Create Lesson', new_lesson_path(@student) %>
+<% end %>
+<br>
+
+<% if current_user.teacher? %>
+	<%= link_to 'Students', student_index_path(current_user) %>
+<% end %>
+
+
+
+

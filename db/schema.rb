@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 20160828010619) do
     t.integer  "days_per_week"
     t.text     "notes"
     t.integer  "plays"
+    t.integer  "lesson_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["lesson_id"], name: "index_assignments_on_lesson_id", using: :btree
   end
 
   create_table "lessons", force: :cascade do |t|
