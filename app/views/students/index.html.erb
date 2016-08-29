@@ -1,0 +1,17 @@
+<h2> My Students </h2>
+
+<% @students.each do |student| %>
+	<div class='row valign-wrapper'>
+		<div class='col s12 m4 valign'>
+			<h5> <%= link_to "#{student.first_name} #{student.last_name}", lesson_index_path(student) %> </h5>
+		</div class='valign'>
+		<div class='col s6 m4 valign'>
+			<%= button_to "Student Information", show_student_path(student), method: :get, class: 'btn' %>
+		</div>
+		<div class='col s6 m4 valign'>
+			<% if Lesson.where(user_id: student.id).exists? %>
+				<%= button_to "Last Lesson", assignment_index_path(Lesson.where(user_id: student.id).order('lesson_date').last), method: :get, class: 'btn' %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

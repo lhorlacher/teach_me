@@ -1,0 +1,7 @@
+<h1> <%= @student.first_name %> <%= @student.last_name %> Details </h1>
+
+<p> <%= @student.age ? ("|| Age: #{@student.age}") : nil %> <%= @student.instrument ? ("|| Instrument(s): #{@student.instrument}") : nil %> </p>
+
+<p> <%= @student.email %> </p>
+
+<p> <%= @student.notes %> </p>
