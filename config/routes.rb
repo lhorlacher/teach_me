@@ -25,7 +25,7 @@ get 'students/:student_id/lessons/new', to: 'lessons#new', as: 'new_lesson'
 #edit
 get 'lessons/:id', to: 'lessons#edit', as: 'edit_lesson'
 #update
-put 'lessons/:id', to: 'lessons#update'
+patch 'lessons/:id', to: 'lessons#update', as: 'lesson'
 #destroy
 delete 'lessons/:id', to: 'lessons#delete'
 

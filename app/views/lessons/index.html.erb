@@ -3,7 +3,9 @@
 <% @lessons.each do |lesson| %>
 
 	<%= lesson.lesson_date %>
+	<br>
 	<%= lesson.notes %>
+	<br>
 	<%= lesson.feedback %>
 
 	<% if current_user.teacher? %>
@@ -16,7 +18,7 @@
 	<% end %>
 
 <% end %>
-
+<br>
 <% if current_user.teacher? %>
 	<%= link_to 'Create Lesson', new_lesson_path(@student) %>
 <% end %>

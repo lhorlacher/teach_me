@@ -27,7 +27,7 @@ class LessonsController < ApplicationController
   def update
 
   	if @lesson.update(lesson_params)
-  		redirect_to assignment_index_path(@lesson)
+  		redirect_to assignments_index_path(@lesson)
   	else
   		render :edit
   	end
