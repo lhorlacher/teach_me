@@ -1,2 +1,28 @@
-<h1>Assignments#new</h1>
-<p>Find me in app/views/assignments/new.html.erb</p>
+<h1>New Assignment</h1>
+
+<%= form_for @assignment do |f| %>
+
+	<%= f.label :book %>
+	<%= f.text_field :book, required: true %>
+
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+
+	<%= f.label :page %>
+	<%= f.number_field :page %>
+
+
+	<%= f.label :per_day %>
+	<%= f.number_field :per_day, placeholder: 'How many plays per day?' %>
+
+
+	<%= f.label :days_per_week %>
+	<%= f.number_field :days_per_week, placeholder: 'How many practice days per week?' %>
+
+
+	<%= f.label :notes %>
+	<%= f.text_area :notes, class: 'materialize-textarea' %>
+
+	<%= f.submit %>
+
+<% end %>
