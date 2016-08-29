@@ -3,7 +3,7 @@
 <% @students.each do |student| %>
 	<div class='row valign-wrapper'>
 		<div class='col s12 m4 valign'>
-			<h5> <%= link_to "#{student.first_name} #{student.last_name}", lesson_index_path(student) %> </h5>
+			<h5> <%= link_to "#{student.first_name} #{student.last_name}", lessons_path(student) %> </h5>
 		</div class='valign'>
 		<div class='col s6 m4 valign'>
 			<%= button_to "Student Information", show_student_path(student), method: :get, class: 'btn' %>
