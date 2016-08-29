@@ -1,2 +1,18 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
+<h1> <%= @teacher.first_name %> <%= @teacher.last_name %> Details </h1>
+
+<%= @teacher.instrument ? ("|| Instrument(s): #{@teacher.instrument}") : nil %> </p>
+
+<p> Email: <%= @teacher.email %> || Teacher ID: <%= @teacher.id %> </p>
+
+<p> About Me: <%= @teacher.notes %> </p>
+
+<p>Current Students:</p>
+<ul>
+	<% @students.each do |student| %>
+	<li>
+		- <%= student.first_name %> <%=student.last_name[0] %>.
+	</li>
+	<% end %>
+</ul>
+
+<%= button_to 'Edit Information', edit_user_registration_path, method: :get, class: 'btn' %>
