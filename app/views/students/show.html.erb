@@ -6,4 +6,6 @@
 
 <p> <%= @student.notes %> </p>
 
-<%= button_to 'Edit Information', edit_user_registration_path, method: :get, class: 'btn' %>
+<% if current_user == @student %>
+	<%= button_to 'Edit Information', edit_user_registration_path, method: :get, class: 'btn' %>
+<% end %>

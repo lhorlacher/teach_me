@@ -15,4 +15,6 @@
 	<% end %>
 </ul>
 
-<%= button_to 'Edit Information', edit_user_registration_path, method: :get, class: 'btn' %>
+<% if current_user == @teacher %>
+	<%= button_to 'Edit Information', edit_user_registration_path, method: :get, class: 'btn' %>
+<% end %>
