@@ -12,10 +12,10 @@ class LessonsController < ApplicationController
   end
 
   def create
-  	@lesson = @student.Lesson.new(lesson_params)
+  	@lesson = @student.lessons.new(lesson_params)
 
   	if @lesson.save
-  		redirect_to assignments_index_pat(@lesson)
+  		redirect_to assignments_index_path(@lesson)
   	else
   		render :new
   	end

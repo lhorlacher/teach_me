@@ -10,7 +10,7 @@
 		</div>
 		<div class='col s6 m4 valign'>
 			<% if Lesson.where(user_id: student.id).exists? %>
-				<%= button_to "Last Lesson", assignment_index_path(Lesson.where(user_id: student.id).order('lesson_date').last), method: :get, class: 'btn' %>
+				<%= button_to "Last Lesson", assignments_index_path(Lesson.where(user_id: student.id).order('lesson_date').last), method: :get, class: 'btn' %>
 			<% end %>
 		</div>
 	</div>
