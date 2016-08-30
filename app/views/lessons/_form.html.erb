@@ -6,16 +6,16 @@
 
 <%= form_for @lesson do |f| %>
 <div class='input-field'>
-<%= f.date_field :lesson_date, class: 'datepicker validate', id: 'date' %>
+<%= f.date_field :lesson_date, id: 'date', class: 'datepicker validate' %>
 <%= f.label :lesson_date, for: 'date', class: 'datepicker' %>
 </div>
 <div class='input-field'>
-<%= f.label :feedback %>
-<%= f.text_area :feedback, class: 'validate materialize-textarea' %>
+<%= f.text_area :feedback, id: 'feedback', class: 'validate materialize-textarea' %>
+<%= f.label :feedback, for: 'feedback' %>
 </div>
 <div class='input-field'>
-<%= f.label :notes %>
-<%= f.text_area :notes, class: 'validate materialize-textarea' %>
+<%= f.text_area :notes, id: 'notes', class: 'validate materialize-textarea' %>
+<%= f.label :notes, for: 'notes'%>
 </div>
 <%= f.submit %>
 
