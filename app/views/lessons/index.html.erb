@@ -2,31 +2,31 @@
 
 <% @lessons.each do |lesson| %>
 
-	<%= lesson.lesson_date %>
-	<br>
-	<%= lesson.notes %>
-	<br>
-	<%= lesson.feedback %>
+	<div class='card'><strong><%= lesson.lesson_date %></strong>
+	
+		<p>Notes: <%= lesson.notes %></p>
+
+		<p>Feedback: <%= lesson.feedback %></p>
+	</div>
 
 	<% if current_user.teacher? %>
-		<%= link_to 'Edit Lesson', edit_lesson_path(lesson) %>
-		<%= link_to 'Assignments', assignments_index_path(lesson) %>
+		<%= link_to 'Edit Lesson', edit_lesson_path(lesson), class: 'btn'%>
+		<%= link_to 'Assignments', assignments_index_path(lesson), class: 'btn'%>
 	<% end %>
-
+	<hr>
 	<% if current_user.student? %>
 		<%= link_to 'Assignements', assignments_index_path(lesson) %>
 	<% end %>
-
-<% end %>
 <br>
+<% end %>
 <% if current_user.teacher? %>
-	<%= link_to 'Create Lesson', new_lesson_path(@student) %>
+	<%= link_to 'Create Lesson', new_lesson_path(@student), class: 'btn' %>
 <% end %>
-<br>
 
 <% if current_user.teacher? %>
-	<%= link_to 'Students', student_index_path(current_user) %>
+	<%= link_to 'Students', student_index_path(current_user), class: 'btn' %>
 <% end %>
+
 
 
 
