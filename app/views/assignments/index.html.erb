@@ -1,13 +1,13 @@
 <h1>Lesson for <%= @student.first_name %> <%= @student.last_name %> on <%= @lesson.lesson_date %> </h1>
 
 <% @assignments.each do |assignment| %>
-	<%= assignment.book %>
-	<%= assignment.title if assignment.title %>
-	<%= assignment.page if assignment.page %>
-	<%= assignment.per_day if assignment.per_day %>
-	<%= assignment.days_per_week if assignment.days_per_week %>
-	<%= assignment.notes if assignment.notes %>
-	<%= assignment.plays if assignment.plays %>
+	<%= "Book: #{assignment.book}" %>
+	<%= "Title: #{assignment.title}" if assignment.title %>
+	<%= "Page No: #{assignment.page}" if assignment.page %> <br>
+	<%= "Reminders: #{assignment.notes}" if assignment.notes %> <br>
+	<%= "Goal per Day: #{assignment.per_day}" if assignment.per_day %>
+	<%= "Goal Days per Week: #{assignment.days_per_week}" if assignment.days_per_week %>
+	<%= "Plays so far: #{assignment.plays}" if assignment.plays %>
 <% end %>
 <hr>
 <%= link_to 'Back to Lessons', lessons_path(@student), class: 'btn'%>
