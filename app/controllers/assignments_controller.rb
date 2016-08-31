@@ -5,7 +5,7 @@ class AssignmentsController < ApplicationController
   
   def index
   	@assignments = @lesson.assignments
-    @student = Student.find(@lesson.user_id)
+    @student = User.find(@lesson.user_id)
   end
 
   def practice
