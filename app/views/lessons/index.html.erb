@@ -11,11 +11,11 @@
 
 	<% if current_user.teacher? %>
 		<%= link_to 'Edit Lesson', edit_lesson_path(lesson), class: 'btn'%>
-		<%= link_to 'Assignments', assignments_index_path(lesson), class: 'btn'%>
+		<%= link_to 'Assignments', assignments_path(lesson), class: 'btn'%>
 	<% end %>
 	<hr>
 	<% if current_user.student? %>
-		<%= link_to 'Assignements', assignments_index_path(lesson) %>
+		<%= link_to 'Assignements', assignments_path(lesson) %>
 	<% end %>
 <br>
 <% end %>

@@ -7,7 +7,7 @@
 <%= form_for @lesson do |f| %>
 <div class='input-field'>
 <%= f.date_field :lesson_date, id: 'date', class: 'datepicker validate' %>
-<%= f.label :lesson_date, for: 'date', class: 'datepicker' %>
+<%= f.label :lesson_date, for: 'date', class: 'datepicker active' %>
 </div>
 <div class='input-field'>
 <%= f.text_area :feedback, id: 'feedback', class: 'validate materialize-textarea' %>
