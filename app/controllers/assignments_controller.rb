@@ -5,6 +5,7 @@ class AssignmentsController < ApplicationController
   
   def index
   	@assignments = @lesson.assignments
+    @student = Student.find(@lesson.user_id)
   end
 
   def practice
@@ -19,7 +20,7 @@ class AssignmentsController < ApplicationController
   	@assignment = @lesson.new(assignment_params)
 
   	if @assignment.save
-  		redirect_to assignment_index_path(@lesson)
+  		redirect_to assignments_path(@lesson)
   	else
   		render :new
   	end
@@ -31,7 +32,7 @@ class AssignmentsController < ApplicationController
   def update
 
   	if @assignment.update(assignment_params)
-  		redirect_to assignment_index_path(@assignment.lesson_id)
+  		redirect_to assignments_path(@assignment.lesson_id)
   	else
   		render :edit
   	end
@@ -39,7 +40,7 @@ class AssignmentsController < ApplicationController
 
   def destroy
 	@assignment.destroy
-	redirect_to assignment_index_path(@assignment.lesson_id)
+	redirect_to assignments_path(@assignment.lesson_id)
   end
   		
   private
@@ -58,7 +59,7 @@ class AssignmentsController < ApplicationController
 
   def verify_teacher
     if current_user.student?
-      redirect_to lesson_index_path(current_user)
+      redirect_to lessons_path(current_user)
     end
   end
 end

@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
   	@lesson = @student.lessons.new(lesson_params)
 
   	if @lesson.save
-  		redirect_to assignments_index_path(@lesson)
+  		redirect_to assignments_path(@lesson)
   	else
   		render :new
   	end
@@ -27,7 +27,7 @@ class LessonsController < ApplicationController
   def update
 
   	if @lesson.update(lesson_params)
-  		redirect_to assignments_index_path(@lesson)
+  		redirect_to assignments_path(@lesson)
   	else
   		render :edit
   	end
@@ -36,7 +36,7 @@ class LessonsController < ApplicationController
   	def destroy
   		@user = User.find(@lesson.user_id)
   		@lesson.destroy
-  		redirect_to lesson_index_path(@user)
+  		redirect_to lessons_path(@user)
   	end
 
   	private
@@ -55,7 +55,7 @@ class LessonsController < ApplicationController
 
       def verify_teacher
         if current_user.student?
-          redirect_to lesson_index_path(current_user)
+          redirect_to lessons_path(current_user)
         end
       end
 end
