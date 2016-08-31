@@ -31,19 +31,19 @@ delete 'lessons/:id', to: 'lessons#delete'
 
 # Assignment
 #index
-get 'lessons/:lesson_id/assignments', to: 'assignments#index', as: 'assignments_index'
+get 'lessons/:lesson_id/assignments', to: 'assignments#index', as: 'assignments'
+#create
+post 'lessons/:lesson_id/assignments/new', to: 'assignments#create'
 #practice
 get 'lessons/:lesson_id/practice', to: 'assignments#practice', as: 'practice'
 #new
 get 'lessons/:lesson_id/assignments/new', to: 'assignments#new', as: 'new_assignment'
-#create
-post 'lessons/:lesson_id/assignments/new', to: 'assignments#create'
 #edit
 get 'assignments/:id', to: 'assignments#edit', as: 'edit_assignment'
 #update
-put 'assignments/:id', to: 'assignments#update'
+put 'assignments/:id', to: 'assignments#update', as: 'assignment'
 #delete
-delete 'assignments/:id', to: 'assignments#update', as: 'delete_assignment'
+delete 'assignments/:id', to: 'assignments#destroy', as: 'delete_assignment'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
