@@ -10,19 +10,21 @@
 		        last_name: Faker::GameOfThrones.city,
 		        age: Faker::Number.between(10,20),
 		        instrument: Faker::Music.instrument,
-	            teacher_id: Faker::Number.between(1,50),
-	            email: Faker::Internet.email)
+	            teacher_id: Faker::Number.between(1,1),
+	            email: Faker::Internet.email,
+				password: 'password',
+				password_confirmation: 'password')
 
-	User.create(first_name: Faker::Pokemon.name,
-		        last_name: Faker::GameOfThrones.city,
-		        age: Faker::Number.between(10,20),
-		        instrument: Faker::Music.instrument,
-		        email: Faker::Internet.email)
+	# User.create(first_name: Faker::Pokemon.name,
+	# 	        last_name: Faker::GameOfThrones.city,
+	# 	        age: Faker::Number.between(10,20),
+	# 	        instrument: Faker::Music.instrument,
+	# 	        email: Faker::Internet.email)
 
 	Lesson.create(lesson_date: Faker::Date.between(1.month.ago, Date.today),
 				  feedback: Faker::Lorem.paragraph,
 				  notes: Faker::Lorem.paragraph,
-				  user_id: Faker::Number.between(1,50))
+				  user_id: Faker::Number.between(2,50))
 
 	Assignment.create(book: Faker::Book.title,
 		              title: Faker::Book.title,
