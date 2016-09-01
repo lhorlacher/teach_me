@@ -41,6 +41,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'simplecov'
   gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
