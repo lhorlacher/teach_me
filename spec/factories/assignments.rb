@@ -6,12 +6,6 @@ FactoryGirl.define do
     :lesson
   end
 
-  factory :lesson do
-    lesson_date "2016-08-31"
-    notes "MyText"
-    feedback "MyText"
-  end
-
   # user_with_posts will create post data after the user has been created
   factory :lesson_with_assignments do
     # posts_count is declared as a transient attribute and available in
@@ -24,9 +18,9 @@ FactoryGirl.define do
     # # evaluator, which stores all values from the factory, including transient
     # # attributes; `create_list`'s second argument is the number of records
     # # to create and we make sure the user is associated properly to the post
-    # after(:create) do |user, evaluator|
-    #   create_list(:post, evaluator.posts_count, user: user)
-    # end
+    after(:create) do |lesson, evaluator|
+      create_list(:assignment, evaluator.assignments_count, lesson: lesson)
+    end
   end
 end
 

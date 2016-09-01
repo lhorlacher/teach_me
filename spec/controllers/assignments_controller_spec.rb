@@ -4,10 +4,13 @@ RSpec.describe AssignmentsController, type: :controller do
 
 	describe "Get #index" do
 		before(:each) do
-			@lesson = FactoryGirl.create(:lesson_with_assignments)
+			sign_in(user = FactoryGirl.create(:user))
+			@lesson = FactoryGirl.create(:lesson)
+		end
+
 		it "returns http success" do
-			get :index
-			expect(response.to have_http_staths(:success)
+			get :index, lesson_id: @lesson.id
+			expect(response).to have_http_staths(:success)
 		end
 
 		it "sets the assignments index variable" do
@@ -20,5 +23,6 @@ RSpec.describe AssignmentsController, type: :controller do
 
 		it "renders the index template" do
 		end
+	end
 
 end
