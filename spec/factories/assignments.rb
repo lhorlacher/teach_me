@@ -3,7 +3,7 @@ FactoryGirl.define do
     book "MyString"
     title "MyString"
     page 1
-    :lesson
+    lesson
   end
 
   # user_with_posts will create post data after the user has been created
