@@ -33,11 +33,13 @@ delete 'lessons/:id', to: 'lessons#delete'
 #index
 get 'lessons/:lesson_id/assignments', to: 'assignments#index', as: 'assignments'
 #create
-post 'lessons/:lesson_id/assignments/new', to: 'assignments#create'
+post 'lessons/:lesson_id/assignments', to: 'assignments#create'
 #practice
 get 'lessons/:lesson_id/practice', to: 'assignments#practice', as: 'practice'
 #new
 get 'lessons/:lesson_id/assignments/new', to: 'assignments#new', as: 'new_assignment'
+#play
+patch 'assignments/:id/play', to: 'assignments#play', as: 'played'
 #edit
 get 'assignments/:id', to: 'assignments#edit', as: 'edit_assignment'
 #update

@@ -1,13 +1,29 @@
 <h1>Lesson for <%= @student.first_name %> <%= @student.last_name %> on <%= @lesson.lesson_date %> </h1>
 
-<% @assignments.each do |assignment| %>
-	<%= "Book: #{assignment.book}" %>
-	<%= "Title: #{assignment.title}" if assignment.title %>
-	<%= "Page No: #{assignment.page}" if assignment.page %> <br>
-	<%= "Reminders: #{assignment.notes}" if assignment.notes %> <br>
-	<%= "Goal per Day: #{assignment.per_day}" if assignment.per_day %>
-	<%= "Goal Days per Week: #{assignment.days_per_week}" if assignment.days_per_week %>
-	<%= "Plays so far: #{assignment.plays}" if assignment.plays %>
+<% if current_user.teacher? %> 
+	<%= button_to 'New Assignment', new_assignment_path(@lesson), class: 'btn', method: :get %>
 <% end %>
+<ul>
+	<% @assignments.each do |assignment| %>
+	<div class='card-panel row valign-wrapper'>
+		<div class='col s12 m10'>
+			<li>
+				<h4>
+					<%= "#{assignment.book}" %>
+					<%= (", #{assignment.title}") if assignment.title =~ /\S/ %>
+					<%= (", Pg #{assignment.page}") if assignment.page %>
+				</h4>
+				<%= "Reminders: #{assignment.notes}" if assignment.notes =~ /\S/ %> <br>
+				<%= "Goal per Day: #{assignment.per_day}" if assignment.per_day %>
+				<%= "|| Goal Days per Week: #{assignment.days_per_week}" if assignment.days_per_week %>
+				<%= "|| Plays so far: #{assignment.plays.to_i}" %>
+			</li>
+		</div>
+		<div class="col s12 m2 valign" >
+			<%= button_to 'Played!', played_path(assignment), method: :patch, class: "btn-large" %>
+		</div>
+	</div>
+	<% end %>
+</ul>
 <hr>
 <%= link_to 'Back to Lessons', lessons_path(@student), class: 'btn'%>

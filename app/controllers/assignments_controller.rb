@@ -1,7 +1,7 @@
 class AssignmentsController < ApplicationController
   before_action :verify_teacher, except: [:index, :practice]
 	before_action :lesson_by_id, only: [:index, :practice, :new, :create]
-	before_action :assignment_by_id, only: [:edit, :update, :destroy]
+	before_action :assignment_by_id, only: [:play, :edit, :update, :destroy]
   
   def index
   	@assignments = @lesson.assignments
@@ -17,13 +17,19 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-  	@assignment = @lesson.new(assignment_params)
+  	@assignment = @lesson.assignments.new(assignment_params)
 
   	if @assignment.save
   		redirect_to assignments_path(@lesson)
   	else
   		render :new
   	end
+  end
+
+  def play
+    plays = @assignment.plays.to_i + 1
+    @assignment.update(plays: plays)
+    redirect_to assignments_path(@assignment.lesson_id)
   end
 
   def edit
