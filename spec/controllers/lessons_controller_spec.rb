@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'faker'
 
+
 RSpec.describe LessonsController, type: :controller do
 
 	describe 'GET #index' do 
@@ -47,15 +48,26 @@ RSpec.describe LessonsController, type: :controller do
 
 	describe 'POST #create' do 
 		before(:each) do 
-			sign_in(teacher = FactoryGirl.create(:user))
-			student = FactoryGirl.create(:user)
+			sign_in(teacher = FactoryGirl.create(:user, email: Faker::Internet.email))
+			student = FactoryGirl.create(:user, teacher_id: teacher.id)
 			lesson_params = {lesson_date: Faker::Date.between(1.month.ago, Date.today),
 			                 notes: 'these are notes', feedback: 'This is feedback'}
 			post :create, {student_id: student.id, lesson: lesson_params}
 		end
 
-		it 'returns http success' do 
-			expect(response).to have_http_status(:success)
+		context 'based on correct params and success' do
+
+			it 'sets the instance variable' do 
+				expect(assigns(:lesson).class).to eq(Lesson)
+			end
+
+			it 'creates a lesson with correct params' do 
+				expect(assigns(:lesson).notes).to eq('these are notes')
+			end
+
+			it 'redirects to the assignments path on successful create' do 
+				expect(response).to redirect_to assignments_path(Lesson.all.first)
+			end
 		end
 	end
 end
